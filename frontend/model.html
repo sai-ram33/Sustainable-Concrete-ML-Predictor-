@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model Information - Sustainable Concrete ML Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- ===================== LEFT SIDEBAR ===================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <!-- Logo -->
+        <div class="logo">
+          <div class="logo-icon">
+            <i data-lucide="box"></i>
+            <i data-lucide="leaf" class="logo-leaf"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-sustain">SUSTAINABLE</span>
+            <span class="logo-concrete">CONCRETE</span>
+            <span class="logo-ml">ML PREDICTOR</span>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+          <a href="index.html" class="nav-item">
+            <i data-lucide="cpu"></i><span>Prediction</span>
+          </a>
+          <a href="model.html" class="nav-item active">
+            <i data-lucide="network"></i><span>Model Information</span>
+          </a>
+          <a href="about.html" class="nav-item">
+            <i data-lucide="info"></i><span>About Us</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i data-lucide="menu"></i>
+    </button>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-text">
+          <h1 class="page-title">Model Information <i data-lucide="brain-circuit" style="color: var(--blue); width: 28px; height: 28px; margin-left: 8px;"></i></h1>
+          <p class="page-subtitle">
+            Learn how our machine learning model analyzes concrete mix parameters and predicts sustainable concrete performance.
+          </p>
+        </div>
+      </header>
+
+      <!-- 2. Model Overview -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="section-header header-blue" style="margin: -18px -18px 18px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+          <i data-lucide="eye"></i> Model Overview
+        </div>
+        <div class="grid-3">
+          <div class="param-card">
+            <div class="param-card-header"><i data-lucide="binary"></i> Model Type</div>
+            <div class="param-card-desc">Machine Learning Regression Model (Random Forest Ensemble)</div>
+          </div>
+          <div class="param-card">
+            <div class="param-card-header"><i data-lucide="target"></i> Purpose</div>
+            <div class="param-card-desc">Predict the engineering performance of sustainable concrete from concrete mix, curing, and sustainable material parameters.</div>
+          </div>
+          <div class="param-card">
+            <div class="param-card-header"><i data-lucide="bar-chart-3"></i> Prediction Type</div>
+            <div class="param-card-desc">Concrete strength and durability property prediction.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Model Input Parameters -->
+      <h2 class="section-title">Input Parameters</h2>
+      <p class="page-subtitle" style="margin-bottom: 16px;">The model uses parameters related to concrete mix design and curing conditions.</p>
+      <div class="grid-3">
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="waves"></i> Water-Binder Ratio</div>
+          <div class="param-card-desc">Represents the ratio of water to total binder and is an important factor influencing concrete strength and durability.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="calendar"></i> Curing Age</div>
+          <div class="param-card-desc">The age of the concrete in days at the time of testing (e.g., 3, 7, 28, or 90 days).</div>
+        </div>
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="thermometer"></i> Curing Condition</div>
+          <div class="param-card-desc">The environment in which the concrete is cured, such as water immersion or air curing.</div>
+        </div>
+      </div>
+
+      <!-- 4. Calculated Mix Quantities -->
+      <h2 class="section-title">Calculated Mix Quantities</h2>
+      <p class="page-subtitle" style="margin-bottom: 16px;">The system uses the selected concrete design parameters to calculate the required material quantities rather than requiring the user to manually enter every mix proportion.</p>
+      
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="summary-icon icon-blue"><i data-lucide="building-2"></i></div>
+          <div>
+            <div class="summary-label">System Calculated Values</div>
+            <div class="summary-number" style="font-size: 18px;">Cement &amp; Water</div>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-icon icon-green"><i data-lucide="mountain"></i></div>
+          <div>
+            <div class="summary-label">System Calculated Values</div>
+            <div class="summary-number" style="font-size: 18px;">Aggregates</div>
+          </div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-icon icon-purple"><i data-lucide="leaf"></i></div>
+          <div>
+            <div class="summary-label">System Calculated Values</div>
+            <div class="summary-number" style="font-size: 18px;">Total Binder</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Sustainable Material Inputs -->
+      <h2 class="section-title">Sustainable Material Parameters</h2>
+      <div class="grid-4">
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="leaf"></i> Fly Ash</div>
+          <div class="param-card-desc">Used as a partial replacement for conventional cement/binder where supported by the selected dataset.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="factory"></i> GGBS</div>
+          <div class="param-card-desc">Ground Granulated Blast-furnace Slag, an industrial by-product used to improve durability.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="sparkles"></i> Silica Fume</div>
+          <div class="param-card-desc">A highly reactive pozzolan used to increase concrete strength and reduce permeability.</div>
+        </div>
+        <div class="param-card">
+          <div class="param-card-header"><i data-lucide="wheat"></i> Rice Husk Ash</div>
+          <div class="param-card-desc">An agricultural by-product rich in silica, utilized to enhance concrete performance.</div>
+        </div>
+      </div>
+
+      <!-- 6. Prediction Outputs -->
+      <h2 class="section-title">Model Prediction Outputs</h2>
+      <div class="grid-3" style="margin-bottom: 24px;">
+        <div class="pred-card card-blue">
+          <div class="pred-card-top">
+            <div class="pred-icon icon-blue"><i data-lucide="box"></i></div>
+            <div>
+              <div class="pred-title">Compressive Strength</div>
+              <div class="pred-value">Unit: MPa</div>
+              <div class="pred-sub">Measures the capacity to withstand loads tending to reduce size.</div>
+            </div>
+          </div>
+        </div>
+        <div class="pred-card card-green">
+          <div class="pred-card-top">
+            <div class="pred-icon icon-green"><i data-lucide="stretch-vertical"></i></div>
+            <div>
+              <div class="pred-title">Split Tensile Strength</div>
+              <div class="pred-value">Unit: MPa</div>
+              <div class="pred-sub">Measures the ability to resist cracking under tension.</div>
+            </div>
+          </div>
+        </div>
+        <div class="pred-card card-orange">
+          <div class="pred-card-top">
+            <div class="pred-icon icon-orange"><i data-lucide="wind"></i></div>
+            <div>
+              <div class="pred-title">Flexural Strength</div>
+              <div class="pred-value">Unit: MPa</div>
+              <div class="pred-sub">Measures the ability to resist bending or flexure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Machine Learning Workflow -->
+      <div class="card" style="margin-bottom: 32px;">
+        <div class="section-header header-green" style="margin: -18px -18px 18px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+          <i data-lucide="git-merge"></i> Machine Learning Workflow
+        </div>
+        <div class="workflow-container">
+          <div class="workflow-step">
+            <div class="workflow-icon"><i data-lucide="sliders-horizontal"></i></div>
+            <div class="workflow-title">Input Parameters</div>
+            <div class="workflow-desc">User provides mix details</div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i data-lucide="database"></i></div>
+            <div class="workflow-title">Data Processing</div>
+            <div class="workflow-desc">Cleaning and formatting</div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i data-lucide="layout-template"></i></div>
+            <div class="workflow-title">Feature Prep</div>
+            <div class="workflow-desc">Scaling and encoding</div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i data-lucide="brain"></i></div>
+            <div class="workflow-title">ML Model</div>
+            <div class="workflow-desc">Algorithms analyze patterns</div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i data-lucide="zap"></i></div>
+            <div class="workflow-title">Prediction</div>
+            <div class="workflow-desc">Estimating outputs</div>
+          </div>
+          <div class="workflow-step">
+            <div class="workflow-icon"><i data-lucide="check-circle"></i></div>
+            <div class="workflow-title">Results</div>
+            <div class="workflow-desc">Concrete performance</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- 8. Dataset Information -->
+        <div class="card">
+          <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text);">Training Dataset</h3>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;"><strong>Records:</strong> 800 (200 mixes × 4 testing ages)</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;"><strong>Input Features:</strong> 8</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;"><strong>Target Properties:</strong> 3</p>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 6px;"><strong>Split:</strong> 80% Training / 20% Testing</p>
+          </div>
+        </div>
+
+        <!-- 9. Model Performance -->
+        <div class="card">
+          <h3 style="font-size: 14px; margin-bottom: 12px; color: var(--text);">Model Performance</h3>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; height: 110px; display: flex; align-items: center; justify-content: center; text-align: center;">
+            <p style="font-size: 13px; color: var(--text-muted);"><strong>Performance metrics will be displayed after model evaluation.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Model Limitations -->
+      <div class="alert-card">
+        <i data-lucide="alert-triangle"></i>
+        <div class="alert-content">
+          <h4>Model Limitations</h4>
+          <p>Machine learning predictions are data-driven estimates based on the training dataset. Prediction reliability depends on the quality, quantity, and range of the available data.</p>
+          <p style="margin-top: 8px;">Actual concrete performance can also be affected by:</p>
+          <ul>
+            <li>Material properties and variability</li>
+            <li>Mixing and batching procedures</li>
+            <li>Placement and compaction techniques</li>
+            <li>Curing environment variations</li>
+            <li>Testing procedures and equipment</li>
+          </ul>
+          <p style="margin-top: 8px; font-weight: 600;">Therefore, ML predictions should support preliminary assessment and research, not replace laboratory testing or applicable concrete design standards.</p>
+        </div>
+      </div>
+
+      <!-- 11. Final Summary -->
+      <div class="info-box" style="margin-top: 24px; background: #e0e7ff; border-color: #c7d2fe; color: #3730a3;">
+        <i data-lucide="lightbulb" style="color: #4f46e5;"></i>
+        <span>
+          <strong>In Simple Terms:</strong> The model learns relationships between concrete mix parameters, curing conditions, sustainable material replacement, and measured concrete performance. After the user provides the required design parameters, the system processes the information and generates predicted concrete properties.
+        </span>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

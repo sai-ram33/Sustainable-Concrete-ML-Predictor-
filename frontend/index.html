@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sustainable Concrete ML Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- ===================== LEFT SIDEBAR ===================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <!-- Logo -->
+        <div class="logo">
+          <div class="logo-icon">
+            <i data-lucide="box"></i>
+            <i data-lucide="leaf" class="logo-leaf"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-sustain">SUSTAINABLE</span>
+            <span class="logo-concrete">CONCRETE</span>
+            <span class="logo-ml">ML PREDICTOR</span>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+          <a href="index.html" class="nav-item active">
+            <i data-lucide="cpu"></i><span>Prediction</span>
+          </a>
+          <a href="model.html" class="nav-item">
+            <i data-lucide="network"></i><span>Model Information</span>
+          </a>
+          <a href="about.html" class="nav-item">
+            <i data-lucide="info"></i><span>About Us</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i data-lucide="menu"></i>
+    </button>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-text">
+          <h1 class="page-title">Sustainable Concrete ML Predictor <span>🌱</span></h1>
+          <p class="page-subtitle">
+            Predict Strength and Durability Properties of Sustainable Concrete
+            using Machine Learning
+          </p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-green" id="howToUseBtn">
+            <i data-lucide="book-open"></i> How to Use
+          </button>
+        </div>
+      </header>
+
+      
+
+
+
+      <!-- Three column dashboard -->
+      <section class="dashboard">
+        <!-- COLUMN 1: Input parameters -->
+        <div class="col col-input">
+          <div class="section-header header-green">
+            <i data-lucide="sliders-horizontal"></i>
+            1. Concrete Mix Input Parameters
+          </div>
+
+          <div class="card">
+            <div class="form-section-title">Basic Mix Proportions (kg/m³)</div>
+            <div class="form-grid">
+              <div class="field">
+                <label><i data-lucide="building-2"></i> Cement</label>
+                <input type="number" id="cement" min="280" max="450" placeholder="280 - 450" />
+              </div>
+              <div class="field">
+                <label><i data-lucide="droplet"></i> Water</label>
+                <input type="number" id="water" min="135" max="205" placeholder="135 - 205" />
+              </div>
+              <div class="field">
+                <label><i data-lucide="mountain"></i> Fine Aggregate (Sand)</label>
+                <input type="number" id="fineAgg" min="600" max="849" placeholder="600 - 849" />
+              </div>
+              <div class="field">
+                <label><i data-lucide="rock"></i> Coarse Aggregate</label>
+                <input type="number" id="coarseAgg" min="900" max="1196" placeholder="900 - 1196" />
+              </div>
+              <div class="field field-wide">
+                <label><i data-lucide="waves"></i> Water / Binder Ratio</label>
+                <input type="number" step="0.01" id="wbr" min="0.12" max="0.52" placeholder="0.12 - 0.52" />
+              </div>
+            </div>
+
+            <div class="form-section-title">Sustainable Materials (% of Binder)</div>
+            <div class="form-grid">
+              <div class="field">
+                <label><i data-lucide="leaf"></i> Fly Ash</label>
+                <div class="input-affix"><input type="number" id="flyAsh" min="0" max="30" placeholder="0 - 30" /><span>%</span></div>
+              </div>
+              <div class="field">
+                <label><i data-lucide="factory"></i> GGBS</label>
+                <div class="input-affix"><input type="number" id="ggbs" min="0" max="45" placeholder="0 - 45" /><span>%</span></div>
+              </div>
+              <div class="field">
+                <label><i data-lucide="sparkles"></i> Silica Fume</label>
+                <div class="input-affix"><input type="number" id="silica" min="0" max="12" placeholder="0 - 12" /><span>%</span></div>
+              </div>
+              <div class="field">
+                <label><i data-lucide="wheat"></i> Rice Husk Ash (RHA)</label>
+                <div class="input-affix"><input type="number" id="rha" min="0" max="12" placeholder="0 - 12" /><span>%</span></div>
+              </div>
+            </div>
+
+            <div class="form-section-title">Other Parameters</div>
+            <div class="form-grid">
+              <div class="field">
+                <label><i data-lucide="calendar"></i> Age (Days)</label>
+                <select id="age">
+                  <option>3 Days</option>
+                  <option>7 Days</option>
+                  <option selected>28 Days</option>
+                  <option>90 Days</option>
+                </select>
+              </div>
+              <div class="field">
+                <label><i data-lucide="thermometer"></i> Curing Condition</label>
+                <select id="curing">
+                  <option selected>Water Curing</option>
+                  <option>Steam Curing</option>
+                  <option>Air Curing</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section-title">Acid Attack Conditions</div>
+            <div class="form-grid">
+              <div class="field">
+                <label><i data-lucide="flask-conical"></i> Acid Type</label>
+                <select id="acidType">
+                  <option value="HCl">HCl (Hydrochloric Acid)</option>
+                  <option value="HNO3">HNO₃ (Nitric Acid)</option>
+                  <option value="H2SO4">H₂SO₄ (Sulphuric Acid)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label><i data-lucide="percent"></i> Acid Concentration</label>
+                <select id="acidConcentration">
+                  <option value="2">2%</option>
+                  <option value="3">3%</option>
+                  <option value="5">5%</option>
+                  <option value="7">7%</option>
+                </select>
+              </div>
+              <div class="field">
+                <label><i data-lucide="anchor"></i> Acid Exposure</label>
+                <select id="acidExposure">
+                  <option value="Immersion">Immersion</option>
+                  <option value="Partial Immersion">Partial Immersion</option>
+                </select>
+              </div>
+              <div class="field">
+                <label><i data-lucide="clock"></i> Exposure Duration</label>
+                <select id="acidDuration">
+                  <option value="7">7 Days</option>
+                  <option value="14">14 Days</option>
+                  <option value="28">28 Days</option>
+                  <option value="56">56 Days</option>
+                  <option value="90">90 Days</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="predict-btn" id="predictBtn">
+              <i data-lucide="activity"></i>
+              <span class="predict-btn-text">PREDICT STRENGTH &amp; DURABILITY</span>
+              <span class="predict-spinner" hidden>
+                <i data-lucide="loader-2" class="spin"></i> Predicting…
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: Strength properties -->
+        <div class="col col-strength">
+          <div class="section-header header-blue">
+            <i data-lucide="shield-check"></i>
+            2. Predicted Strength Properties
+          </div>
+
+          <div class="pred-card card-blue">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-blue"><i data-lucide="box"></i></div>
+              <div>
+                <div class="pred-title">Compressive Strength (MPa)</div>
+                <div class="pred-value" id="valComp">0.00</div>
+                <div class="pred-sub">at 28 Days</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pred-card card-green">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-green"><i data-lucide="stretch-vertical"></i></div>
+              <div>
+                <div class="pred-title">Split Tensile Strength (MPa)</div>
+                <div class="pred-value" id="valTensile">0.00</div>
+                <div class="pred-sub">at 28 Days</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pred-card card-orange">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-orange"><i data-lucide="wind"></i></div>
+              <div>
+                <div class="pred-title">Flexural Strength (MPa)</div>
+                <div class="pred-value" id="valFlex">0.00</div>
+                <div class="pred-sub">at 28 Days</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLUMN 3: Durability properties -->
+        <div class="col col-durability">
+          <div class="section-header header-purple">
+            <i data-lucide="shield"></i>
+            3. Predicted Durability Properties
+          </div>
+
+          <div class="pred-card card-lightblue">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-blue"><i data-lucide="droplets"></i></div>
+              <div class="pred-main">
+                <div class="pred-title">Water Absorption (%)</div>
+                <div class="pred-value" id="valAbs">0.00</div>
+              </div>
+              <span class="badge badge-blue">Lower is Better</span>
+            </div>
+          </div>
+
+          <div class="pred-card card-lightblue2">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-blue"><i data-lucide="waves"></i></div>
+              <div class="pred-main">
+                <div class="pred-title">Sorptivity (mm/√s)</div>
+                <div class="pred-value" id="valSorp">0.000</div>
+              </div>
+              <span class="badge badge-blue">Lower is Better</span>
+            </div>
+          </div>
+
+          <div class="pred-card card-lightred">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-red"><i data-lucide="flame"></i></div>
+              <div class="pred-main">
+                <div class="pred-title">Acid Strength Loss (%)</div>
+                <div class="pred-value" id="valLoss">0.00</div>
+              </div>
+              <span class="badge badge-red">Lower is Better</span>
+            </div>
+          </div>
+
+          <div class="pred-card card-lightgreen">
+            <div class="pred-card-top">
+              <div class="pred-icon icon-green"><i data-lucide="heart"></i></div>
+              <div class="pred-main">
+                <div class="pred-title">Acid Strength Retention (%)</div>
+                <div class="pred-value" id="valRet">0.00</div>
+              </div>
+              <span class="badge badge-green">Higher is Better</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="chart-title">Strength vs Age (Predicted)</div>
+          <div class="chart-wrap">
+            <canvas id="strengthChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom note -->
+      <div class="info-box">
+        <i data-lucide="info"></i>
+        <span>
+          <strong>Note:</strong> Predictions are based on ML models trained on
+          experimental and synthetic data. Actual results may vary.
+        </span>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===================== MODALS ===================== -->
+  <div class="modal-overlay" id="howToUseModal" hidden>
+    <div class="modal">
+      <div class="modal-header modal-green">
+        <i data-lucide="book-open"></i> How to Use
+        <button class="modal-close" data-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <ol class="modal-list">
+          <li>Enter the <strong>basic mix proportions</strong> (cement, water, aggregates) in kg/m³.</li>
+          <li>Set the <strong>sustainable material</strong> percentages (fly ash, GGBS, silica fume, RHA) as a % of binder.</li>
+          <li>Choose the <strong>curing conditions</strong> and testing age.</li>
+
+          <li>Click <strong>PREDICT STRENGTH &amp; DURABILITY</strong> to see predicted strength and durability properties.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="aboutProjectModal" hidden>
+    <div class="modal">
+      <div class="modal-header modal-purple">
+        <i data-lucide="info"></i> About Project
+        <button class="modal-close" data-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>
+          The <strong>Sustainable Concrete ML Predictor</strong> is a machine
+          learning powered dashboard that estimates the strength and durability
+          properties of sustainable concrete mixes.
+        </p>
+        <p>
+          It uses models trained on a comprehensive dataset of 200 mixes across
+          4 testing ages (800 records), incorporating cement replacements such
+          as fly ash, GGBS, silica fume and rice husk ash.
+        </p>
+        <p class="modal-muted">
+          This is a frontend demonstration. Predictions shown are demo values
+          and do not constitute real experimental results.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

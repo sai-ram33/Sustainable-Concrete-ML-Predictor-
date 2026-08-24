@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Sustainable Concrete ML Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="layout">
+    <!-- ===================== LEFT SIDEBAR ===================== -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <!-- Logo -->
+        <div class="logo">
+          <div class="logo-icon">
+            <i data-lucide="box"></i>
+            <i data-lucide="leaf" class="logo-leaf"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-sustain">SUSTAINABLE</span>
+            <span class="logo-concrete">CONCRETE</span>
+            <span class="logo-ml">ML PREDICTOR</span>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+          <a href="index.html" class="nav-item">
+            <i data-lucide="cpu"></i><span>Prediction</span>
+          </a>
+          <a href="model.html" class="nav-item">
+            <i data-lucide="network"></i><span>Model Information</span>
+          </a>
+          <a href="about.html" class="nav-item active">
+            <i data-lucide="info"></i><span>About Us</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i data-lucide="menu"></i>
+    </button>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="main">
+      <!-- 1. Header -->
+      <header class="header">
+        <div class="header-text">
+          <h1 class="page-title">
+            About Us 
+            <div style="display: inline-flex; align-items: center; gap: 4px; margin-left: 8px;">
+              <i data-lucide="leaf" style="color: var(--green); width: 24px; height: 24px;"></i>
+              <i data-lucide="building-2" style="color: var(--text-muted); width: 20px; height: 20px;"></i>
+              <i data-lucide="brain-circuit" style="color: var(--blue); width: 20px; height: 20px;"></i>
+            </div>
+          </h1>
+          <p class="page-subtitle">
+            Advancing sustainable concrete research through civil engineering and machine learning.
+          </p>
+        </div>
+      </header>
+
+      <div class="grid-2">
+        <!-- 2. Who We Are -->
+        <div class="card">
+          <div class="section-header header-blue" style="margin: -18px -18px 18px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+            <i data-lucide="users"></i> Who We Are
+          </div>
+          <p style="font-size: 14px; color: var(--text); font-weight: 500; margin-bottom: 16px;">
+            We are a team focused on combining civil engineering knowledge, sustainable construction practices, and machine learning to support the development and evaluation of sustainable concrete.
+          </p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Our work brings together:</p>
+          <ul style="font-size: 13px; color: var(--text-muted); padding-left: 20px; line-height: 1.6;">
+            <li>Concrete technology</li>
+            <li>Sustainable construction</li>
+            <li>Data analysis</li>
+            <li>Machine learning</li>
+            <li>Engineering research</li>
+          </ul>
+        </div>
+
+        <!-- 3. Our Vision & 4. Our Mission -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="card" style="background: #f0fdf4; border-color: #bbf7d0;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i data-lucide="target" style="color: #16a34a; width: 24px; height: 24px;"></i>
+              <h3 style="color: #166534; font-size: 16px; margin: 0;">Our Vision</h3>
+            </div>
+            <p style="font-size: 13px; color: #15803d; line-height: 1.5; font-weight: 500;">
+              To support a more sustainable construction industry by using engineering knowledge and intelligent data-driven technologies to improve the way concrete materials and performance are evaluated.
+            </p>
+          </div>
+
+          <div class="card">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <i data-lucide="rocket" style="color: var(--blue); width: 20px; height: 20px;"></i>
+              <h3 style="color: var(--text); font-size: 15px; margin: 0;">Our Mission</h3>
+            </div>
+            <p style="font-size: 13px; color: var(--text); margin-bottom: 12px; font-weight: 500;">
+              Our mission is to develop accessible and practical digital tools that help students, researchers, engineers, and sustainability professionals explore concrete performance using data-driven methods.
+            </p>
+            <ul style="font-size: 12.5px; color: var(--text-muted); padding-left: 20px; line-height: 1.5;">
+              <li>Support sustainable concrete research</li>
+              <li>Encourage data-driven engineering</li>
+              <li>Simplify preliminary concrete performance evaluation</li>
+              <li>Promote responsible use of sustainable materials</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Our Approach -->
+      <div class="equation-banner">
+        <h3 style="margin-bottom: 20px; font-size: 18px;">Our Approach</h3>
+        <div class="equation-visual">
+          <span>Civil Engineering Knowledge</span>
+          <span class="equation-plus">+</span>
+          <span>Experimental/Data Information</span>
+          <span class="equation-plus">+</span>
+          <span>Machine Learning</span>
+          <span class="equation-plus">+</span>
+          <span>Sustainability</span>
+          <span class="equation-equals">=</span>
+          <span class="equation-result">Intelligent Concrete Prediction</span>
+        </div>
+        <p style="font-size: 13.5px; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+          We combine engineering principles with data-driven methods to create a practical platform for sustainable concrete research and preliminary performance assessment.
+        </p>
+      </div>
+
+      <!-- 5. Why We Built This Platform -->
+      <h2 class="section-title">Why We Built This Platform</h2>
+      <div class="card">
+        <p style="font-size: 13.5px; color: var(--text); line-height: 1.6; margin-bottom: 12px;">
+          Concrete research can involve many combinations of materials, mix parameters, curing conditions, and sustainable material replacement levels. Evaluating every combination experimentally can require significant time, materials, and resources.
+        </p>
+        <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+          We developed this platform to provide a convenient machine-learning-based environment for preliminary prediction and exploration of sustainable concrete performance.
+        </p>
+      </div>
+
+      <!-- 6. What We Focus On -->
+      <h2 class="section-title">What We Focus On</h2>
+      <div class="grid-4" style="margin-bottom: 32px;">
+        <div class="param-card" style="border-top: 3px solid var(--green);">
+          <div class="param-card-header"><i data-lucide="leaf"></i> Sustainable Construction</div>
+          <div class="param-card-desc">Exploring approaches that can reduce dependence on conventional materials and support more sustainable concrete development.</div>
+        </div>
+        <div class="param-card" style="border-top: 3px solid var(--blue);">
+          <div class="param-card-header"><i data-lucide="hard-hat"></i> Concrete Engineering</div>
+          <div class="param-card-desc">Applying established concrete engineering concepts to mix design and performance evaluation.</div>
+        </div>
+        <div class="param-card" style="border-top: 3px solid var(--purple);">
+          <div class="param-card-header"><i data-lucide="cpu"></i> Machine Learning</div>
+          <div class="param-card-desc">Using data-driven models to identify relationships between concrete parameters and performance.</div>
+        </div>
+        <div class="param-card" style="border-top: 3px solid var(--orange);">
+          <div class="param-card-header"><i data-lucide="graduation-cap"></i> Engineering Education</div>
+          <div class="param-card-desc">Making advanced engineering and ML concepts easier to understand and explore for students and professionals.</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- 8. Who Can Use Our Platform? -->
+        <div class="card">
+          <div class="section-header header-green" style="margin: -18px -18px 18px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+            <i data-lucide="users-2"></i> Who Can Use Our Platform?
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 4px;">Civil Engineering Students</div>
+              <div style="font-size: 12.5px; color: var(--text-muted);">For learning about concrete, sustainability, and machine learning applications.</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 4px;">Researchers</div>
+              <div style="font-size: 12.5px; color: var(--text-muted);">For preliminary investigation and comparison of sustainable concrete mixtures.</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 4px;">Concrete Professionals</div>
+              <div style="font-size: 12.5px; color: var(--text-muted);">For exploring data-driven approaches to concrete performance assessment.</div>
+            </div>
+            <div>
+              <div style="font-weight: 700; font-size: 13px; color: var(--text); margin-bottom: 4px;">Sustainability Researchers</div>
+              <div style="font-size: 12.5px; color: var(--text-muted);">For studying the potential use of sustainable material replacements.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <!-- 9. Our Commitment -->
+          <div class="card">
+            <h3 style="font-size: 15px; margin-bottom: 12px; color: var(--text); display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="shield-check" style="color: var(--green); width: 18px; height: 18px;"></i> Our Commitment
+            </h3>
+            <p style="font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 10px;">We are committed to responsible, transparent, and research-oriented use of machine learning in civil engineering.</p>
+            <ul style="font-size: 12.5px; color: var(--text-muted); padding-left: 20px; line-height: 1.5;">
+              <li>Engineering-based decision support</li>
+              <li>Transparent model information</li>
+              <li>Responsible interpretation of predictions</li>
+              <li>Continuous improvement</li>
+              <li>Support for sustainable construction research</li>
+            </ul>
+          </div>
+
+          <!-- 10. Research and Development -->
+          <div class="card" style="background: #f8fafc; border-color: #e2e8f0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="font-size: 14px; margin: 0; color: var(--text);">Research &amp; Development</h3>
+              <span class="badge badge-blue">Future Development</span>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">The platform can be continuously improved through:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <span style="font-size: 11px; background: #fff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px; color: #475569;">Larger datasets</span>
+              <span style="font-size: 11px; background: #fff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px; color: #475569;">More materials</span>
+              <span style="font-size: 11px; background: #fff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px; color: #475569;">Carbon emission assessment</span>
+              <span style="font-size: 11px; background: #fff; border: 1px solid #cbd5e1; padding: 2px 8px; border-radius: 4px; color: #475569;">Cost analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Team & 12. Contact -->
+      <h2 class="section-title">Team &amp; Contact</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="font-size: 15px; margin-bottom: 16px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 8px;">Our Team</h3>
+          
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 2px;">Project Lead</div>
+            <div style="font-size: 14px; font-weight: 600; color: var(--text);">[Name]</div>
+          </div>
+          
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 2px;">Civil Engineering / Research</div>
+            <div style="font-size: 13px; color: var(--text);">[Name / Department]</div>
+          </div>
+          
+          <div style="margin-bottom: 16px;">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 2px;">Machine Learning / Software Development</div>
+            <div style="font-size: 13px; color: var(--text);">[Name / Department]</div>
+          </div>
+
+          <div style="background: #f1f5f9; padding: 10px 12px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="building" style="color: #64748b; width: 16px; height: 16px;"></i>
+            <span style="font-size: 12.5px; font-weight: 500; color: #475569;">[Institution Name]</span>
+          </div>
+        </div>
+
+        <div class="card" style="display: flex; flex-direction: column;">
+          <h3 style="font-size: 15px; margin-bottom: 16px; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 8px;">Get in Touch</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; flex: 1;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: 8px; background: #e0e7ff; color: #4f46e5; display: flex; align-items: center; justify-content: center;"><i data-lucide="mail" style="width: 16px; height: 16px;"></i></div>
+              <div>
+                <div style="font-size: 11px; color: var(--text-muted);">Email</div>
+                <div style="font-size: 13px; font-weight: 500; color: var(--text);">[Project Email]</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: 8px; background: #e0e7ff; color: #4f46e5; display: flex; align-items: center; justify-content: center;"><i data-lucide="map-pin" style="width: 16px; height: 16px;"></i></div>
+              <div>
+                <div style="font-size: 11px; color: var(--text-muted);">Institution</div>
+                <div style="font-size: 13px; font-weight: 500; color: var(--text);">[Institution Name]</div>
+                <div style="font-size: 12px; color: var(--text-muted);">[Department Name]</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-blue" style="flex: 1; justify-content: center; background: var(--blue); color: #fff; border-color: var(--blue);">Contact Us</button>
+            <button class="btn" style="flex: 1; justify-content: center; border-color: #cbd5e1; color: #475569;">Research Collaboration</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Disclaimer -->
+      <div style="margin-top: 32px; padding: 16px; text-align: center; border-top: 1px solid #e2e8f0;">
+        <p style="font-size: 11px; color: #64748b; line-height: 1.5; max-width: 800px; margin: 0 auto;">
+          <strong>Disclaimer:</strong> This platform is intended for research, educational, and preliminary decision-support purposes. Machine learning predictions should not be considered a replacement for laboratory testing, applicable concrete standards, or professional engineering judgment.
+        </p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
