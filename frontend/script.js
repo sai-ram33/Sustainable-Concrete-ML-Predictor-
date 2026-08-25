@@ -40,7 +40,7 @@ function initChart() {
       datasets: [
         {
           label: "Compressive Strength (MPa)",
-          data: [24.1, 31.65, 48.62, 62.31],
+          data: [0, 0, 0, 0],
           borderColor: "#2563eb",
           backgroundColor: gradient("#2563eb"),
           fill: true,
@@ -52,7 +52,7 @@ function initChart() {
         },
         {
           label: "Split Tensile Strength (MPa)",
-          data: [3.22, 4.12, 3.85, 4.92],
+          data: [0, 0, 0, 0],
           borderColor: "#22c55e",
           backgroundColor: gradient("#22c55e"),
           fill: true,
@@ -64,7 +64,7 @@ function initChart() {
         },
         {
           label: "Flexural Strength (MPa)",
-          data: [3.22, 4.12, 5.87, 7.23],
+          data: [0, 0, 0, 0],
           borderColor: "#f97316",
           backgroundColor: gradient("#f97316"),
           fill: true,
@@ -132,15 +132,40 @@ function initPredict() {
 
   const textEl = btn.querySelector(".predict-btn-text");
   const spinEl = btn.querySelector(".predict-spinner");
+  const ageEl = document.getElementById("age");
 
-  const demo = {
-    valComp: "48.62",
-    valTensile: "3.85",
-    valFlex: "5.87",
-    valAbs: "2.87",
-    valSorp: "0.072",
-    valLoss: "13.65",
-    valRet: "86.35",
+  const demos = {
+    "3 Days": { valComp: "24.10", valTensile: "3.22", valFlex: "3.22", valAbs: "3.45", valSorp: "0.095", valLoss: "15.20", valRet: "84.80" },
+    "7 Days": { valComp: "31.65", valTensile: "4.12", valFlex: "4.12", valAbs: "3.12", valSorp: "0.088", valLoss: "14.50", valRet: "85.50" },
+    "28 Days": { valComp: "48.62", valTensile: "3.85", valFlex: "5.87", valAbs: "2.87", valSorp: "0.072", valLoss: "13.65", valRet: "86.35" },
+    "90 Days": { valComp: "62.31", valTensile: "4.92", valFlex: "7.23", valAbs: "2.55", valSorp: "0.061", valLoss: "12.10", valRet: "87.90" }
+  };
+
+  const applyDemo = (selectedAge) => {
+    // Update age labels
+    document.querySelectorAll(".age-display").forEach(function(el) {
+      el.textContent = "at " + selectedAge;
+    });
+
+    // Update metric values
+    const currentDemo = demos[selectedAge] || demos["28 Days"];
+    Object.keys(currentDemo).forEach(function (id) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = currentDemo[id];
+    });
+
+    // Update chart
+    if (window.strengthChart) {
+      const order = ["3 Days", "7 Days", "28 Days", "90 Days"];
+      const compData = order.map(age => parseFloat(demos[age].valComp));
+      const tensileData = order.map(age => parseFloat(demos[age].valTensile));
+      const flexData = order.map(age => parseFloat(demos[age].valFlex));
+
+      strengthChart.data.datasets[0].data = compData;
+      strengthChart.data.datasets[1].data = tensileData;
+      strengthChart.data.datasets[2].data = flexData;
+      strengthChart.update();
+    }
   };
 
   btn.addEventListener("click", function () {
@@ -150,12 +175,7 @@ function initPredict() {
     spinEl.hidden = false;
 
     setTimeout(function () {
-      // Apply demo predictions
-      Object.keys(demo).forEach(function (id) {
-        const el = document.getElementById(id);
-        if (el) el.textContent = demo[id];
-      });
-
+      applyDemo(ageEl ? ageEl.value : "28 Days");
 
       // Reset button
       btn.disabled = false;
@@ -190,13 +210,9 @@ function initValidation() {
       const min = parseFloat(input.getAttribute('min'));
       const max = parseFloat(input.getAttribute('max'));
       
-      if (val < min) {
-        errorEl.innerHTML = `<i data-lucide="alert-circle" style="width: 14px; height: 14px;"></i> Caution: Value is below minimum (${min} - ${max})`;
-        errorEl.hidden = false;
-        input.classList.add('input-error');
-        if (window.lucide) lucide.createIcons();
-      } else if (val > max) {
-        errorEl.innerHTML = `<i data-lucide="alert-circle" style="width: 14px; height: 14px;"></i> Caution: Value is above maximum (${min} - ${max})`;
+      if (val < min || val > max) {
+        const condition = val < min ? 'below minimum' : 'above maximum';
+        errorEl.innerHTML = `<i data-lucide="alert-circle" style="width: 14px; height: 14px;"></i> Caution: Value is ${condition} (${min} - ${max})`;
         errorEl.hidden = false;
         input.classList.add('input-error');
         if (window.lucide) lucide.createIcons();
@@ -208,35 +224,28 @@ function initValidation() {
   });
 }
 
-
 /* -------------------- MODALS -------------------- */
 function initModals() {
   const howTo = document.getElementById("howToUseModal");
-  const about = document.getElementById("aboutProjectModal");
-
   const open = (modal) => (e) => {
     e.preventDefault();
-    modal.hidden = false;
+    if (modal) modal.hidden = false;
   };
-  const close = (modal) => () => (modal.hidden = true);
+  const close = (modal) => () => { if (modal) modal.hidden = true; };
 
   const howBtn = document.getElementById("howToUseBtn");
-  const aboutBtn = document.getElementById("aboutProjectBtn");
   if (howBtn) howBtn.addEventListener("click", open(howTo));
-  if (aboutBtn) aboutBtn.addEventListener("click", open(about));
 
-  [howTo, about].forEach(function (modal) {
-    if (!modal) return;
-    modal.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", close(modal)));
-    modal.addEventListener("click", function (e) {
-      if (e.target === modal) modal.hidden = true;
+  if (howTo) {
+    howTo.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", close(howTo)));
+    howTo.addEventListener("click", function (e) {
+      if (e.target === howTo) howTo.hidden = true;
     });
-  });
+  }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      if (howTo) howTo.hidden = true;
-      if (about) about.hidden = true;
+    if (e.key === "Escape" && howTo) {
+      howTo.hidden = true;
     }
   });
 }
