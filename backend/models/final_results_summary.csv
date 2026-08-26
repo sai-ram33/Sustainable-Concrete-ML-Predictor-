@@ -1,0 +1,7 @@
+Property,Model,R2,MAE,RMSE
+Compressive Strength,Final Random Forest (regularized),0.603,5.5425,7.4202
+Split Tensile Strength,Final Random Forest (regularized),0.5324,0.3605,0.4875
+Flexural Strength,Final Random Forest (regularized),0.5319,0.4214,0.5707
+Water Absorption,Final Random Forest (regularized),0.5891,0.4953,0.6214
+Sorptivity,Final Random Forest (regularized),0.6173,0.0085,0.0111
+Acid Strength Loss,Final Random Forest,0.9904,1.3549,1.7037

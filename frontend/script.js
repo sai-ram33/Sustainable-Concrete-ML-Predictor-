@@ -134,54 +134,74 @@ function initPredict() {
   const spinEl = btn.querySelector(".predict-spinner");
   const ageEl = document.getElementById("age");
 
-  const demos = {
-    "3 Days": { valComp: "24.10", valTensile: "3.22", valFlex: "3.22", valAbs: "3.45", valSorp: "0.095", valLoss: "15.20", valRet: "84.80" },
-    "7 Days": { valComp: "31.65", valTensile: "4.12", valFlex: "4.12", valAbs: "3.12", valSorp: "0.088", valLoss: "14.50", valRet: "85.50" },
-    "28 Days": { valComp: "48.62", valTensile: "3.85", valFlex: "5.87", valAbs: "2.87", valSorp: "0.072", valLoss: "13.65", valRet: "86.35" },
-    "90 Days": { valComp: "62.31", valTensile: "4.92", valFlex: "7.23", valAbs: "2.55", valSorp: "0.061", valLoss: "12.10", valRet: "87.90" }
-  };
-
-  const applyDemo = (selectedAge) => {
-    // Update age labels
-    document.querySelectorAll(".age-display").forEach(function(el) {
-      el.textContent = "at " + selectedAge;
-    });
-
-    // Update metric values
-    const currentDemo = demos[selectedAge] || demos["28 Days"];
-    Object.keys(currentDemo).forEach(function (id) {
-      const el = document.getElementById(id);
-      if (el) el.textContent = currentDemo[id];
-    });
-
-    // Update chart
-    if (window.strengthChart) {
-      const order = ["3 Days", "7 Days", "28 Days", "90 Days"];
-      const compData = order.map(age => parseFloat(demos[age].valComp));
-      const tensileData = order.map(age => parseFloat(demos[age].valTensile));
-      const flexData = order.map(age => parseFloat(demos[age].valFlex));
-
-      strengthChart.data.datasets[0].data = compData;
-      strengthChart.data.datasets[1].data = tensileData;
-      strengthChart.data.datasets[2].data = flexData;
-      strengthChart.update();
-    }
-  };
-
-  btn.addEventListener("click", function () {
+  btn.addEventListener("click", async function () {
     // Loading state
     btn.disabled = true;
     textEl.hidden = true;
     spinEl.hidden = false;
 
-    setTimeout(function () {
-      applyDemo(ageEl ? ageEl.value : "28 Days");
+    // Gather input values
+    const payload = {
+      Cement_kg_m3: document.getElementById("cement").value || 0,
+      Water_kg_m3: document.getElementById("water").value || 0,
+      Fine_Aggregate_Sand_kg_m3: document.getElementById("fineAgg").value || 0,
+      Coarse_Aggregate_kg_m3: document.getElementById("coarseAgg").value || 0,
+      FlyAsh_pct: document.getElementById("flyAsh").value || 0,
+      GGBS_pct: document.getElementById("ggbs").value || 0,
+      SilicaFume_pct: document.getElementById("silica").value || 0,
+      RHA_pct: document.getElementById("rha").value || 0,
+      Water_Binder_Ratio: document.getElementById("wbr").value || 0,
+      Curing_Age_days: parseInt((ageEl.value || "28").replace(" Days", "")),
+      Curing_Condition: document.getElementById("curing").value,
+      acid_attack: true,
+      Acid_Type: document.getElementById("acidType").value,
+      Acid_Concentration_pct: document.getElementById("acidConcentration").value,
+      Acid_Exposure_Duration_days: document.getElementById("acidDuration").value,
+      Acid_Exposure_Condition: document.getElementById("acidExposure").value
+    };
 
+    try {
+      const response = await fetch("/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await response.json();
+      
+      if (data.result) {
+        // Update age labels
+        document.querySelectorAll(".age-display").forEach(function(el) {
+          el.textContent = "at " + ageEl.value;
+        });
+
+        // Update metric values
+        const res = data.result;
+        document.getElementById("valComp").textContent = res.CompressiveStrength_MPa.toFixed(2);
+        document.getElementById("valTensile").textContent = res.SplitTensileStrength_MPa.toFixed(2);
+        document.getElementById("valFlex").textContent = res.FlexuralStrength_MPa.toFixed(2);
+        document.getElementById("valAbs").textContent = res.WaterAbsorption_pct.toFixed(2);
+        document.getElementById("valSorp").textContent = res.Sorptivity_mm_per_sqrt_s.toFixed(3);
+        document.getElementById("valLoss").textContent = res.AcidStrengthLoss_pct.toFixed(2);
+        document.getElementById("valRet").textContent = res.AcidStrengthRetention_pct.toFixed(2);
+
+        // Update chart
+        if (window.strengthChart && data.chart) {
+          strengthChart.data.datasets[0].data = data.chart.compressive;
+          strengthChart.data.datasets[1].data = data.chart.split;
+          strengthChart.data.datasets[2].data = data.chart.flexural;
+          strengthChart.update();
+        }
+      }
+    } catch (err) {
+      console.error("Error making prediction:", err);
+      alert("Failed to connect to the backend prediction API.");
+    } finally {
       // Reset button
       btn.disabled = false;
       textEl.hidden = false;
       spinEl.hidden = true;
-    }, 900);
+    }
   });
 }
 
