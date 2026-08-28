@@ -140,6 +140,19 @@ function initPredict() {
     textEl.hidden = true;
     spinEl.hidden = false;
 
+    // Reset values in case the backend fails
+    document.getElementById("valComp").textContent = "-";
+    document.getElementById("valTensile").textContent = "-";
+    document.getElementById("valFlex").textContent = "-";
+    document.getElementById("valAbs").textContent = "-";
+    document.getElementById("valSorp").textContent = "-";
+    document.getElementById("valLoss").textContent = "-";
+    document.getElementById("valRet").textContent = "-";
+    if (window.strengthChart) {
+      strengthChart.data.datasets.forEach(ds => ds.data = [0, 0, 0, 0]);
+      strengthChart.update();
+    }
+
     // Gather input values
     const payload = {
       Cement_kg_m3: document.getElementById("cement").value || 0,
@@ -207,6 +220,14 @@ function initPredict() {
 
 /* -------------------- VALIDATION -------------------- */
 function initValidation() {
+  // Prevent scroll wheel from changing number input values
+  const allNumberInputs = document.querySelectorAll('input[type="number"]');
+  allNumberInputs.forEach(input => {
+    input.addEventListener('wheel', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+  });
+
   const inputs = document.querySelectorAll('input[type="number"][min][max]');
   inputs.forEach(input => {
     const errorEl = document.createElement('div');

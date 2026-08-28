@@ -151,11 +151,13 @@
                   <option value="HCl">HCl (Hydrochloric Acid)</option>
                   <option value="HNO3">HNO₃ (Nitric Acid)</option>
                   <option value="H2SO4">H₂SO₄ (Sulphuric Acid)</option>
+                  <option value="None">None</option>
                 </select>
               </div>
               <div class="field">
                 <label><i data-lucide="percent"></i> Acid Concentration</label>
                 <select id="acidConcentration">
+                  <option value="0">0%</option>
                   <option value="2">2%</option>
                   <option value="3">3%</option>
                   <option value="5">5%</option>
@@ -166,12 +168,14 @@
                 <label><i data-lucide="anchor"></i> Acid Exposure</label>
                 <select id="acidExposure">
                   <option value="Immersion">Immersion</option>
-                  <option value="Partial Immersion">Partial Immersion</option>
+                  <option value="Wet drying cycle">Wet drying cycle</option>
+                  <option value="None">None</option>
                 </select>
               </div>
               <div class="field">
                 <label><i data-lucide="clock"></i> Exposure Duration</label>
                 <select id="acidDuration">
+                  <option value="0">0 Days</option>
                   <option value="7">7 Days</option>
                   <option value="14">14 Days</option>
                   <option value="28">28 Days</option>
@@ -203,7 +207,7 @@
               <div class="pred-icon icon-blue"><i data-lucide="box"></i></div>
               <div>
                 <div class="pred-title">Compressive Strength (MPa)</div>
-                <div class="pred-value" id="valComp">0.00</div>
+                <div class="pred-value" id="valComp">-</div>
                 <div class="pred-sub age-display">at 28 Days</div>
               </div>
             </div>
@@ -214,7 +218,7 @@
               <div class="pred-icon icon-green"><i data-lucide="stretch-vertical"></i></div>
               <div>
                 <div class="pred-title">Split Tensile Strength (MPa)</div>
-                <div class="pred-value" id="valTensile">0.00</div>
+                <div class="pred-value" id="valTensile">-</div>
                 <div class="pred-sub age-display">at 28 Days</div>
               </div>
             </div>
@@ -225,7 +229,7 @@
               <div class="pred-icon icon-orange"><i data-lucide="wind"></i></div>
               <div>
                 <div class="pred-title">Flexural Strength (MPa)</div>
-                <div class="pred-value" id="valFlex">0.00</div>
+                <div class="pred-value" id="valFlex">-</div>
                 <div class="pred-sub age-display">at 28 Days</div>
               </div>
             </div>
@@ -245,7 +249,7 @@
               <div class="pred-icon icon-blue"><i data-lucide="droplets"></i></div>
               <div class="pred-main">
                 <div class="pred-title">Water Absorption (%)</div>
-                <div class="pred-value" id="valAbs">0.00</div>
+                <div class="pred-value" id="valAbs">-</div>
               </div>
               <span class="badge badge-blue">Lower is Better</span>
             </div>
@@ -256,7 +260,7 @@
               <div class="pred-icon icon-blue"><i data-lucide="waves"></i></div>
               <div class="pred-main">
                 <div class="pred-title">Sorptivity (mm/√s)</div>
-                <div class="pred-value" id="valSorp">0.000</div>
+                <div class="pred-value" id="valSorp">-</div>
               </div>
               <span class="badge badge-blue">Lower is Better</span>
             </div>
@@ -267,7 +271,7 @@
               <div class="pred-icon icon-red"><i data-lucide="flame"></i></div>
               <div class="pred-main">
                 <div class="pred-title">Acid Strength Loss (%)</div>
-                <div class="pred-value" id="valLoss">0.00</div>
+                <div class="pred-value" id="valLoss">-</div>
               </div>
               <span class="badge badge-red">Lower is Better</span>
             </div>
@@ -278,7 +282,7 @@
               <div class="pred-icon icon-green"><i data-lucide="heart"></i></div>
               <div class="pred-main">
                 <div class="pred-title">Acid Strength Retention (%)</div>
-                <div class="pred-value" id="valRet">0.00</div>
+                <div class="pred-value" id="valRet">-</div>
               </div>
               <span class="badge badge-green">Higher is Better</span>
             </div>
@@ -308,17 +312,61 @@
   <div class="modal-overlay" id="howToUseModal" hidden>
     <div class="modal">
       <div class="modal-header modal-green">
-        <i data-lucide="book-open"></i> How to Use
+        <i data-lucide="book-open"></i> HOW TO USE – SUSTAINABLE CONCRETE ML PREDICTOR
         <button class="modal-close" data-close>&times;</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="font-size: 14px; line-height: 1.6; max-height: 70vh; overflow-y: auto;">
         <ol class="modal-list">
-          <li>Enter the <strong>basic mix proportions</strong> (cement, water, aggregates) in kg/m³.</li>
-          <li>Set the <strong>sustainable material</strong> percentages (fly ash, GGBS, silica fume, RHA) as a % of binder.</li>
-          <li>Choose the <strong>curing conditions</strong> and testing age.</li>
-
-          <li>Click <strong>PREDICT STRENGTH &amp; DURABILITY</strong> to see predicted strength and durability properties.</li>
+          <li><strong>ENTER MIX PROPORTIONS</strong>
+            <ul style="margin-top: 6px; margin-bottom: 16px; margin-left: 20px; color: var(--text-muted); list-style-type: disc;">
+              <li>Cement: 280–450 kg/m³</li>
+              <li>Water: 135–205 kg/m³</li>
+              <li>Fine Aggregate: 600–849 kg/m³</li>
+              <li>Coarse Aggregate: 900–1196 kg/m³</li>
+              <li>Water/Binder Ratio: 0.12–0.52</li>
+            </ul>
+          </li>
+          <li><strong>ENTER SUSTAINABLE MATERIALS</strong>
+            <ul style="margin-top: 6px; margin-bottom: 6px; margin-left: 20px; color: var(--text-muted); list-style-type: disc;">
+              <li>Fly Ash: 0–30%</li>
+              <li>GGBS: 0–45%</li>
+              <li>Silica Fume: 0–12%</li>
+              <li>RHA: 0–12%</li>
+            </ul>
+            <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 13px;"><em>Enter 0% if a material is not used.</em></p>
+          </li>
+          <li><strong>SELECT PARAMETERS</strong>
+            <ul style="margin-top: 6px; margin-bottom: 16px; margin-left: 20px; color: var(--text-muted); list-style-type: disc;">
+              <li>Testing Age</li>
+              <li>Curing Condition</li>
+              <li>Acid Type</li>
+              <li>Acid Concentration</li>
+              <li>Acid Exposure</li>
+              <li>Exposure Duration</li>
+            </ul>
+          </li>
+          <li><strong>PREDICT</strong>
+            <p style="margin-top: 6px; margin-bottom: 16px; color: var(--text-muted);">Click "PREDICT STRENGTH &amp; DURABILITY".</p>
+          </li>
+          <li><strong>VIEW RESULTS</strong>
+            <ul style="margin-top: 6px; margin-bottom: 16px; margin-left: 20px; color: var(--text-muted); list-style-type: disc;">
+              <li>Compressive Strength</li>
+              <li>Split Tensile Strength</li>
+              <li>Flexural Strength</li>
+              <li>Water Absorption</li>
+              <li>Sorptivity</li>
+              <li>Acid Strength Loss/Retention</li>
+            </ul>
+          </li>
         </ol>
+        
+        <div style="margin-top: 24px; padding: 14px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;">
+          <strong style="color: #b45309; display: block; margin-bottom: 8px;"><i data-lucide="info" style="width: 16px; height: 16px; display: inline-block; vertical-align: text-bottom;"></i> NOTE:</strong>
+          <ul style="color: #92400e; margin-left: 20px; font-size: 13px; list-style-type: disc;">
+            <li style="margin-bottom: 4px;">Enter values only within the specified ranges.</li>
+            <li>Predictions are ML-based estimates and should be verified through laboratory testing.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
